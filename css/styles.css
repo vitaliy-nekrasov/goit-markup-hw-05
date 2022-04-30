@@ -32,6 +32,7 @@
   --team-background-color: #f5f4fa;
   --portfolio-btn-back-color: #f5f4fa;
   --border-color: #ececec;
+  --footer-social: #44454e;
   --portfolio-border-color: #eeeeee;
   --contacts-link-color: rgba(255, 255, 255, 0.6);
   --color-social-footer: rgba(255, 255, 255, 0.1);
@@ -40,6 +41,8 @@
 
   --color-back: transparent;
   --color-social: currentColor;
+  --color-clients: currentColor;
+  --color-social-footer: currentColor;
 }
 body {
   font-family: var(--main-font);
@@ -345,14 +348,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 250ms var(--timing);
 }
 .back-icon-clients .icon-clients {
   box-sizing: content-box;
   padding: 18px 34px;
+  color: var(--social-color);
+  transition: color 250ms var(--timing);
+  
 }
 .link-clients:hover .icon-clients,
 .link-clients:focus .icon-clients {
-  --color-clients: var(--accent-color);
+  color: var(--accent-color);
 }
 .back-icon-clients:hover,
 .back-icon-clients:focus {
@@ -383,6 +390,7 @@ body {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--btn-text-color);
+  transition: color 250ms var(--timing);
 }
 .address .list {
   padding-left: 0;
@@ -392,6 +400,7 @@ body {
   line-height: 1.71px;
   letter-spacing: 0.03em;
   color: var(--contacts-link-color);
+  transition: color 250ms var(--timing);
 }
 .address-link:hover,
 .address-link:focus {
@@ -426,9 +435,13 @@ body {
 .footer-icon .item + .item {
   margin-left: 10px;
 }
+.social-link-footer>.icon {
+  color: var(--footer-social);
+  transition: color 250ms var(--timing);
+}
 .social-link-footer:hover > .icon,
 .social-link-footer:focus > .icon {
-  --color-social-footer: var(--accent-color);
+  color: var(--accent-color);
 }
 
 /*########## PORTFOLIO (PAGE) ############*/
@@ -453,6 +466,7 @@ body {
   background-color: var(--portfolio-btn-back-color);
   cursor: pointer;
 
+  transition: color 250ms var(--timing), background-color 250ms var(--timing); 
   border-radius: 4px;
   border-color: transparent;
   padding: 6px 22px;
@@ -498,7 +512,9 @@ body {
   background-color: var(--btn-text-color);
   border: 1px solid var(--portfolio-border-color);
   box-sizing: border-box;
+  cursor: pointer;
 
+  transition: box-shadow 250ms var(--timing);
   width: 370px;
 }
 .portfolio-card:hover {
