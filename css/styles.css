@@ -38,8 +38,8 @@
   --img-background: rgba(47, 48, 58, 0.8);
   --timing: cubic-bezier(0.4, 0, 0.2, 1);
 
-  --color-back: #fff;
-  --color-social: #afb1b8;
+  --color-back: transparent;
+  --color-social: currentColor;
 }
 body {
   font-family: var(--main-font);
@@ -310,10 +310,19 @@ body {
   justify-content: center;
   padding-bottom: 30px;
 }
+.card-icon {
+  color: var(--social-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--btn-text-color);
+
+  transition: color 250ms var(--timing),background-color 250ms var(--timing);
+}
 .social-link:hover > .card-icon,
 .social-link:focus > .card-icon {
-  --color-social: var(--btn-text-color);
-  --color-back: var(--accent-color);
+  color: var(--btn-text-color);
+  background-color: var(--accent-color);
 }
 
 .list .icon-back + .icon-back {
