@@ -25,6 +25,7 @@
   --secondary-color: #757575;
   --logo-color: #000000;
   --accent-color: #2196f3;
+  --card-back: rgba(33, 150, 243, 0.9);
   --hero-background-color: #2f303a;
   --btn-text-color: #ffffff;
   --border-color: #afb1b8;
@@ -43,6 +44,7 @@
   --color-social: currentColor;
   --color-clients: currentColor;
   --color-social-footer: currentColor;
+  --color-mail: currentColor;
 }
 body {
   font-family: var(--main-font);
@@ -100,7 +102,7 @@ body {
 .item {
   position: relative;
 }
-.header-list .active::after {
+.active::after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -110,7 +112,6 @@ body {
   background-color: var(--accent-color);
   border-radius: 2px;
 }
-
 .icon-address > .contact-link {
   color: var(--secondary-color);
   display: flex;
@@ -139,10 +140,11 @@ body {
 }
 .icon-address .icon {
   margin-right: 10px;
+  fill: var(--secondary-color);
 }
 .contact-link:hover > .icon,
 .contact-link:focus > .icon {
-  --color-mail: var(--accent-color);
+  fill: var(--accent-color);
 }
 /*########## MAIN ############*/
 /*########## HERO ############*/
@@ -458,7 +460,53 @@ body {
 .social-link-footer:focus > .icon {
   color: var(--accent-color);
 }
+/*########## BACKDROP ############*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
 
+  transform: scale(1,1);
+  transition: transform 250ms var(--timing),opacity 250ms var(--timing);
+}
+.is-hidden {
+  opacity: 0;
+  /* visibility: hidden; */
+  pointer-events: none;
+
+  transform: scale(0,0);
+  transition: transform 250ms var(--timing),opacity 250ms var(--timing);
+}
+.mod-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: block;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-image: url("../images/icon/close.svg");
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  min-width: 528px;
+  min-height: 581px;
+  background: var(--btn-text-color);
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 4px;
+
+}
 /*########## PORTFOLIO (PAGE) ############*/
 .hidden {
   display: none;
@@ -504,7 +552,6 @@ body {
   padding-bottom: 20px;
   padding-left: 24px;
   padding-right: 24px;
-  z-index: 2;
 }
 .portfolio-title {
   font-weight: 700;
@@ -534,6 +581,31 @@ body {
   transition: box-shadow 250ms var(--timing);
   width: 370px;
   overflow: hidden;
+}
+.card-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.card-text {
+position: absolute;
+left: 0;
+top: 0;
+
+font-size: 18px;
+line-height: 1.56;
+letter-spacing: 0.03em;
+color: var(--btn-text-color);
+background: var(--card-back);
+margin: 0;
+width: 100%;
+height: 100%;
+padding: 63px 24px;
+
+transform: translateY(101%);
+transition: transform 250ms var(--timing);
+}
+.portfolio-card:hover .card-text {
+transform: translateY(0%);
 }
 .portfolio-card:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
